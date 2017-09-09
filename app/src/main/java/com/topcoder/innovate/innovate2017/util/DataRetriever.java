@@ -25,7 +25,7 @@ public class DataRetriever {
         speakerArrayList = new ArrayList<>();
         try {
 
-            InputStream isr = activity.getAssets().open("speakers.json");
+            InputStream isr = activity.getAssets().open("speakers.txt");
             InputStreamReader streamReader = new InputStreamReader(isr,"utf-8");
             BufferedReader reader = new BufferedReader(streamReader);
             String line;
@@ -37,7 +37,7 @@ public class DataRetriever {
             streamReader.close();
             reader.close();
 
-            JSONObject speakerjson = new JSONObject(builder.toString());//builder读取了JSON中的数据。
+            JSONObject speakerjson = new JSONObject(builder.toString());//读取了JSON中的数据。
             JSONArray array = speakerjson.getJSONArray("inf");         //从JSONObject中取出数组对象
 
 
@@ -47,7 +47,6 @@ public class DataRetriever {
                 JSONObject inf_array = new JSONObject(inf_string);
                 speaker = new Speaker();
                 speaker.setName(inf_array.getString("name"));
-                Log.d("TAG",speaker.getName());
                 speaker.setTitle(inf_array.getString("title"));
                 speaker.setPicture(inf_array.getString("picture"));
 

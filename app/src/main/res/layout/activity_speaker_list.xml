@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/speakers_background">
 
 
@@ -12,7 +13,12 @@
         android:layout_marginTop="145dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:layout_marginBottom="8dp"
         android:id="@+id/speakers_recyclerView">
 
     </android.support.v7.widget.RecyclerView>
+    <com.topcoder.innovate.innovate2017.UnderBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
 </LinearLayout>

@@ -1,11 +1,11 @@
 package com.topcoder.innovate.innovate2017;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,13 +29,20 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Speaker speaker = speakerList.get(position);
+        final Speaker speaker = speakerList.get(position);
         holder.speakerName.setText(speaker.getName());
         holder.speakerDetail.setText(speaker.getDetails());
-
-        int imageId = getResourdIdByResourdName(context,"String",speaker.getPicture());
-
+        final int imageId =speaker.getPicID();
         holder.speakerIcon.setImageResource(imageId);
+        holder.speakerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context = view.getContext();
+                SpeakerDetailActivity.actionStart(context,speaker.getName(),imageId,"placeholder",speaker.getDetails());
+
+            }
+        });
+
     }
 
     @Override
@@ -43,29 +50,23 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHold
         return speakerList.size();
     }
 
-    public static int getResourdIdByResourdName(Context context, String defType, String ResName){
-        Resources res = context.getResources();
-        int resourceId = res.getIdentifier(ResName,defType,context.getPackageName());
-
-        return resourceId;
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView speakerName;
         private TextView speakerDetail;
         private ImageView speakerIcon;
+        private ImageButton speakerButton;
         public ViewHolder(View itemView) {
             super(itemView);
             speakerName = (TextView) itemView.findViewById(R.id.speaker_name);
             speakerDetail = (TextView) itemView.findViewById(R.id.speaker_detail);
             speakerIcon = (ImageView) itemView.findViewById(R.id.speaker_icon);
+            speakerButton = (ImageButton) itemView.findViewById(R.id.speaker_btn);
         }
     }
 
-    public SpeakerAdapter(List<Speaker> spList ,Context con){
-        speakerList = spList;
-        context = con;
+    public SpeakerAdapter(List<Speaker> spList){
+        this.speakerList = spList;
 
     }
 }

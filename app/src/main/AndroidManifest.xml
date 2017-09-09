@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".SpeakerListActivity">
         </activity>
+        <activity android:name=".SpeakerDetailActivity">
+        </activity>
     </application>
 
 </manifest>

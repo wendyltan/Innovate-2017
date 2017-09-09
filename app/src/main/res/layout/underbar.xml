@@ -9,14 +9,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="20dp"
         android:src="@drawable/home_icon"/>
 
     <ImageView
         android:id="@+id/info_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="290dp"
         android:src="@drawable/info_icon"/>
 
 </LinearLayout>

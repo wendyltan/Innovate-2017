@@ -18,6 +18,8 @@ public class Speaker implements Serializable {
 
     private String details;
 
+    private int picID;
+
     private List<String> sessionIds;
 
 
@@ -43,7 +45,21 @@ public class Speaker implements Serializable {
     }
 
     public void setPicture(String picture) {
-        this.picture = picture;
+        String[] tmp = picture.split("\\.")[0].split("/");
+        this.picture = tmp[tmp.length-1];
+        if(this.picture.toString().charAt(0)>='0'&&this.picture.toString().charAt(0)<='9'){
+            this.picture = "x"+this.picture;
+        }
+        this.picture = this.picture.replaceAll("-","_");
+        this.picture = this.picture.toLowerCase();
+    }
+
+    public void setPicID(int picID) {
+        this.picID = picID;
+    }
+
+    public int getPicID() {
+        return picID;
     }
 
     public String getDetails() {
