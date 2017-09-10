@@ -10,6 +10,7 @@ import android.widget.ImageView;
 public class HomeActivity extends AppCompatActivity {
 
     private ImageView speakersView;
+    private ImageView BaiduMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,15 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        BaiduMap = (ImageView) findViewById(R.id.home_menumap);
+        BaiduMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeActivity.this,MapActivity.class);
+                startActivity(i);
+            }
+        });
+
 
 
     }

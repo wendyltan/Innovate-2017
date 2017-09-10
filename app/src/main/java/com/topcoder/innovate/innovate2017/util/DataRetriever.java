@@ -6,10 +6,12 @@ package com.topcoder.innovate.innovate2017.util;
 import android.app.Activity;
 import android.util.Log;
 
+import com.topcoder.innovate.innovate2017.model.Map;
 import com.topcoder.innovate.innovate2017.model.Speaker;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.ls.LSInput;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -20,6 +22,7 @@ import java.util.List;
 public class DataRetriever {
     private Speaker speaker;
     private List<Speaker> speakerArrayList;
+    public List<Map> mapPositions;
 
     public List<Speaker> retrieveAllSpeakers(Activity activity) {
         speakerArrayList = new ArrayList<>();
@@ -69,5 +72,47 @@ public class DataRetriever {
         }
         return speakerArrayList;
     }
+
+    public List<Map> retrieveAllPositions(Activity activity){
+        mapPositions = new ArrayList<>();
+        try {
+
+            InputStream isr = activity.getAssets().open("bling.txt");
+            InputStreamReader streamReader = new InputStreamReader(isr,"utf-8");
+            BufferedReader reader = new BufferedReader(streamReader);
+            String line;
+            StringBuilder builder = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+
+            }
+            streamReader.close();
+            reader.close();
+
+            JSONObject speakerjson = new JSONObject(builder.toString());//读取了JSON中的数据。
+            JSONArray array = speakerjson.getJSONArray("inf");         //从JSONObject中取出数组对象
+
+
+
+            for (int i = 0; i < array.length(); i++) {
+                String inf_string= array.getJSONObject(i).getString("fields");
+                JSONObject inf_array = new JSONObject(inf_string);
+                Map map = new Map();
+                map.setName(inf_array.getString("name"));
+                map.setAddress(inf_array.getString("address"));
+                map.setCity(inf_array.getString("city"));
+                map.setLatitude(inf_array.getDouble("latitude"));
+                map.setLongitude(inf_array.getDouble("longitude"));
+                mapPositions.add(map);
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mapPositions;
+    }
+
 
 }
