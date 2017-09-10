@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SpeakerDetailActivity extends AppCompatActivity {
+public class SpeakerDetailActivity extends BaseActivity {
 
     private ImageButton detail_back_btn;
     private ImageView speaker_image;

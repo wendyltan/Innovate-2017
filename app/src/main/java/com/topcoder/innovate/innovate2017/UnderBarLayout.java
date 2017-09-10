@@ -33,7 +33,9 @@ public class UnderBarLayout extends LinearLayout implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.home_icon:
-                ((Activity)getContext()).finish();
+                ActivityCollector.finishAll();
+                Intent i = new Intent(getContext(),HomeActivity.class);
+                getContext().startActivity(i);
                 break;
 
             case R.id.info_icon:

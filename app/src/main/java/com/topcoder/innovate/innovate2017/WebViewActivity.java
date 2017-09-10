@@ -7,7 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends BaseActivity {
 
     private WebView webview;
     @Override

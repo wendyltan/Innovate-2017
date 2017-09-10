@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpeakerListActivity extends AppCompatActivity {
+public class SpeakerListActivity extends BaseActivity {
 
     private List<Speaker> speakerList = new ArrayList<>();
     private RecyclerView skRecyclerView;

@@ -24,7 +24,7 @@ import com.topcoder.innovate.innovate2017.util.DataRetriever;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends BaseActivity {
 
     private MapView mMapView = null;
 
